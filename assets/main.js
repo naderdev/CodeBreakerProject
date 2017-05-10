@@ -98,3 +98,5 @@ function validateInput(input) {
     }
     return true;
 }
+
+//Nader      
