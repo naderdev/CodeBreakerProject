@@ -7,16 +7,16 @@ let attempt = document.getElementById('attempt');
 
 function guess() {
     let input = document.getElementById('user-guess');
-    //add functionality to guess function here
-}
+    if(answer.value == "" || attempt.value == "") {
+        setHiddenFields();
+    }
 
-//Ensure user input is valid, iterate attempt if valid
+    //Ensure user input is valid, iterate attempt if valid
     if(!validateInput(input.value)){
         return;
     } else {
         attempt.value++;
     }
-
 
     //Check user input against answer and display results
     if(getResults(input.value)) {
@@ -59,7 +59,7 @@ function getResults(input){
     }
 }
 
-//function sets answer sets the answer variable equal to a randomly generated whole number between 0 and 9999.
+//function sets hidden fields
 function setHiddenFields() {
     answer.value = Math.floor(Math.random() * 10000).toString();
     while(answer.value.length < 4) {
@@ -67,6 +67,7 @@ function setHiddenFields() {
     }
     attempt.value = 0;
 }
+
 //function sets the message to supplied string
 function setMessage(message){
     document.getElementById('message').innerHTML = message;
@@ -82,7 +83,6 @@ function showAnswer(success){
     }
     code.innerHTML = answer.value;
 }
-
 
 //function hides the guessing-div and shows the replay-div to allow replay
 function showReplay(){
